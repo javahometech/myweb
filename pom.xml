@@ -21,6 +21,19 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<distributionManagement>
+		    <repository>
+		      <id>nexus</id>
+		      <name>Releases</name>
+		      <url>http://192.168.1.5:32772/repository/maven-releases/</url>
+		    </repository>
+		    <snapshotRepository>
+		      <id>nexus</id>
+		      <name>Snapshot</name>
+		      <url>http://192.168.1.5:32772/repository/maven-snapshots/</url>
+		    </snapshotRepository>
+  		</distributionManagement>
 	<build>
 		<finalName>myweb</finalName>
 	</build>
