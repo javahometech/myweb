@@ -7,7 +7,7 @@
 	<version>0.0.1-RELEASE</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<dependencies      abc
+	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
