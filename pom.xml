@@ -8,21 +8,6 @@
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	
-	<!-- <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
-		Only unit tests are run by default.
-		<skip.unit.tests>false</skip.unit.tests>
-		
-		Sonar
-			<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-			<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-			<sonar.jacoco.reportPath>${project.build.directory}/coverage-reports/jacoco.exec</sonar.jacoco.reportPath>
-			<sonar.language>java</sonar.language>
-		Manju end				
-		
-	</properties> -->
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -37,12 +22,12 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<dependency>
+		<!-- <dependency>
 		  <groupId>org.sonarsource.java</groupId>
 		  <artifactId>sonar-jacoco-listeners</artifactId>
 		  <version>3.8</version>
 		  <scope>test</scope>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 	
 	<distributionManagement>
