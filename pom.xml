@@ -7,6 +7,22 @@
 	<version>0.0.2-RELEASE</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+		<!-- Only unit tests are run by default. -->
+		<skip.unit.tests>false</skip.unit.tests>
+		<!-- Manju Add -->
+		<!-- Sonar -->
+			<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+			<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+			<sonar.jacoco.reportPath>${project.build.directory}/coverage-reports/jacoco.exec</sonar.jacoco.reportPath>
+			<sonar.language>java</sonar.language>
+		<!-- Manju end -->				
+		
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -19,6 +35,13 @@
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.sonarsource.java</groupId>
+		  <artifactId>sonar-jacoco-listeners</artifactId>
+		  <version>3.8</version>
+		  <scope>test</scope>
 		</dependency>
 	</dependencies>
 	
@@ -36,5 +59,43 @@
   		</distributionManagement>
 	<build>
 		<finalName>myweb</finalName>
+		<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>				    
+		</plugin>
 	</build>
+	<profiles>
+	  <profile>
+      <id>coverage-per-test</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <!-- Minimal supported version is 2.4 -->
+            <version>2.13</version>
+            <configuration>
+              <properties>
+                <property>
+                  <name>listener</name>
+                  <value>org.sonar.java.jacoco.JUnitListener</value>
+                </property>
+              </properties>
+              <testFailureIgnore>true</testFailureIgnore>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+
+      <dependencies>
+        <dependency>
+          <groupId>org.sonarsource.java</groupId>
+          <artifactId>sonar-jacoco-listeners</artifactId>
+          <version>3.8</version>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+    </profile>	
+	</profiles>
+	
 </project>
