@@ -10,6 +10,8 @@ public class HelloWorld {
 
 			// if the number is divisible by 2 then it is even
 			if (i % 2 == 0) {
+				int j = i;
+				j = j+i;
 			}
 		}
 	}
