@@ -31,17 +31,17 @@
 	</dependencies>
 	
 	<distributionManagement>
-		    <repository>
-		      <id>nexus</id>
-		      <name>Releases</name>
-		      <url>http://192.168.70.1:32768/#browse/browse/components:maven-releases</url>
-		    </repository>
-		    <snapshotRepository>
-		      <id>nexus</id>
-		      <name>Snapshot</name>
-		      <url>http://192.168.70.1:32768/#browse/browse/components:maven-snapshots</url>
-		    </snapshotRepository>
-  		</distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://192.168.1.5:32768/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>Snapshot</name>
+			<url>http://192.168.1.5:32768/repository/maven-snapshots/</url>
+		</snapshotRepository>
+      </distributionManagement>
 	<build>
 		<finalName>myweb</finalName>
 		<plugins>
