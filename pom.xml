@@ -7,7 +7,7 @@
 	<version>0.5.0-RELEASE</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+	<!-- To Test Jenkins job-->
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
