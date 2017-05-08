@@ -15,7 +15,6 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 			<scope>provided</scope>
-			<hari>hari</hari>
 		</dependency>
 
 		<dependency>
