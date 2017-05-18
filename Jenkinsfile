@@ -6,7 +6,7 @@ node{
  
  stage('Build'){
     def mvnHome = tool 'maven3'
-    sh "${mvnHome}/bin/mvn clean package" 
+    sh "mvn clean package" 
  }
  stage('Send Email'){
      mail bcc: '', body: 'Demo Pipeline', cc: '', from: '', replyTo: '', subject: 'Pipeline Demo', to: 'hari.kammana@gmail.com'
