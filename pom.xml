@@ -5,7 +5,7 @@
 	<artifactId>myweb</artifactId>
 	<packaging>war</packaging>
 	<!-- Demo-->
-	<version>0.6.0-RELEASE</version>
+	<version>${env.release}</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
         <!-- Testing jenkins....-->
@@ -45,7 +45,7 @@
 		</snapshotRepository>
   	</distributionManagement>
 	<build>
-		<finalName>myweb</finalName>
+<!-- 		<finalName>myweb</finalName> -->
 		<plugins>
 		<!-- <plugin>
 			<groupId>org.jacoco</groupId>
