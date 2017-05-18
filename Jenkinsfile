@@ -10,7 +10,5 @@ node{
  stage('Send Email'){
      mail bcc: '', body: 'Demo Pipeline', cc: '', from: '', replyTo: '', subject: 'Pipeline Demo', to: 'hari.kammana@gmail.com'
  }
- stage('Archive'){
-     archiveArtifacts 'target/*.war'
- }
+ 
 }
