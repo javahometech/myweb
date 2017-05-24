@@ -1,5 +1,5 @@
 #! groovy
-node{
+node
  stage('Source'){
      git 'https://github.com/javahometech/myweb.git'
  }
