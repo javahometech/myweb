@@ -1,0 +1,1 @@
+export CATALINA_OPTS="-Xms128M -Xmx512MB"
