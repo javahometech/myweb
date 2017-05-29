@@ -1,1 +1,1 @@
-export CATALINA_OPTS="-Xms128M -Xmx512MB"
+export JAVA_OPTS= "-Xms128m -Xmx1024m"
