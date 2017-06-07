@@ -56,6 +56,14 @@
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>				    
 		</plugin> -->
+			
+	<plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.3</version>
+            <configuration>
+                <compilerVersion>1.8</compilerVersion>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 	<profiles>
