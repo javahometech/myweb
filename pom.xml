@@ -36,7 +36,7 @@
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>
-			<url>http://52.42.107.84:8081/repositories/releases/</url>
+			<url>http://52.42.107.84:8081/repositories/test1/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
