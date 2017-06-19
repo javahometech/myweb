@@ -36,14 +36,15 @@
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>
-			<url>http://52.42.107.84:8081/nexus/content/repositories/releases/</url>
+			<url>http://52.42.107.84:8081/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
 			<name>Snapshot</name>
-			<url>http://52.42.107.84:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://52.42.107.84:8081/repositories/snapshots/</url>
 		</snapshotRepository>
-  	</distributionManagement>
+  	
+	</distributionManagement>
 	<build>
 		<finalName>myweb</finalName>
 		<plugins>
