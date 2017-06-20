@@ -36,12 +36,12 @@
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>
-			<url>http://54.69.81.129:8081/nexus/content/repositories/releases/</url>
+			<url>http://52.43.13.186:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
 			<name>Snapshot</name>
-			<url>http://54.69.81.129:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://52.43.13.186:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
   	
 	</distributionManagement>
