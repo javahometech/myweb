@@ -7,7 +7,6 @@
 	<!-- Demo-->
 	<version>0.7.0-SNAPSHOT</version>
 	<name>myweb Maven Webapp</name>
-	<javahome> Demo </javahome>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
