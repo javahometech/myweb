@@ -4,11 +4,10 @@
 	<groupId>in.javahome</groupId>
 	<artifactId>myweb</artifactId>
 	<packaging>war</packaging>
-	<hari>Hari</hari>
-	<!-- Demo-->
 	<version>0.7.0-SNAPSHOT</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<!-- This is comment in XML-->
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
