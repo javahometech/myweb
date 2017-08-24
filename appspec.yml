@@ -1,5 +1,11 @@
 version: 0.0
 os: linux
 files:
-  - source: /index.html
-    destination: /tmp/
+  - source: /myweb.war
+    destination: /opt/tomcat8/webapps
+hooks:
+  BeforeInstall:
+    - location: scripts/stop-tomcat.sh
+  AfterInstall:
+    - location: scripts/start-tomcat.sh
+      timeout: 30
