@@ -5,7 +5,7 @@ files:
     destination: /opt/tomcat8/webapps
 hooks:
   BeforeInstall:
-    - location: stop-tomcat.sh
+    - location: stop_tomcat.sh
   AfterInstall:
-    - location: start-tomcat.sh
+    - location: start_tomcat.sh
       timeout: 30
