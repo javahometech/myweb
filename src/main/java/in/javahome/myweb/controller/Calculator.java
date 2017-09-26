@@ -16,6 +16,6 @@ public class Calculator {
 	}
 	public void demo(){
 	 String s = null;
-	 s.tostring();
+	 s.toString();
 	}
 }
