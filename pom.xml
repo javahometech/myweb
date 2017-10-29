@@ -7,7 +7,6 @@
 	<version>0.7.0</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<!-- This is comment in XML-->
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
