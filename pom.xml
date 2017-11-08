@@ -22,6 +22,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>com.itextpdf</groupId>
+		    <artifactId>itextpdf</artifactId>
+		    <version>5.0.6</version>
+		</dependency>
+
 
 		<!-- <dependency>
 		  <groupId>org.sonarsource.java</groupId>
