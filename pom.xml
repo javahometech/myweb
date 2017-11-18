@@ -30,7 +30,8 @@
 		<dependency>
 		    <groupId>com.amazonaws</groupId>
 		    <artifactId>aws-java-sdk-s3</artifactId>
-		    <version>1.11.231.78</version>
+		    <version>1.11.231</version>
+			<hari>data</hari>
 		</dependency>
 
 
