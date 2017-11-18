@@ -27,13 +27,6 @@
 		    <artifactId>itextpdf</artifactId>
 		    <version>5.0.6</version>
 		</dependency>
-		<dependency>
-		    <groupId>com.amazonaws</groupId>
-		    <artifactId>aws-java-sdk-s3</artifactId>
-		    <version>1.11.231</version>
-			<hari>data</hari>
-		</dependency>
-
 
 		<!-- <dependency>
 		  <groupId>org.sonarsource.java</groupId>
