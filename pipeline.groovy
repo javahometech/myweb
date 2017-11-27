@@ -13,4 +13,6 @@ node{
  stage('Archive'){
      archiveArtifacts 'target/*.war'
  }
+ 
+ 
 }
