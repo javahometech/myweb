@@ -15,7 +15,7 @@ public class Calculator {
 		return i*j;
 	}
 	public void demo(){
-	 String s = null;
-	 s.toString();
+// 	 String s = null;
+// 	 s.toString();
 	}
 }
