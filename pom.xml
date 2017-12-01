@@ -22,11 +22,7 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>in.javahome</groupId>
-			<artifactId>orm</artifactId>
-			<version>0.0.1</version>
-		</dependency>
+	
 		<dependency>
 		    <groupId>com.itextpdf</groupId>
 		    <artifactId>itextpdf</artifactId>
