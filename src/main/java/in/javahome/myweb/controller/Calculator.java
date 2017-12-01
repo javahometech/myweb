@@ -3,6 +3,7 @@ package in.javahome.myweb.controller;
  * 
  */
 public class Calculator {
+	String name;
 	/*
 	 * @param i
 	 * @param j
@@ -15,7 +16,7 @@ public class Calculator {
 		return i*j;
 	}
 	public void demo(){
-// 	 String s = null;
-// 	 s.toString();
+ 	 String s = null;
+ 	 s.toString();
 	}
 }
