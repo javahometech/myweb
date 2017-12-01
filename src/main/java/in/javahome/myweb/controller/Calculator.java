@@ -15,8 +15,4 @@ public class Calculator {
 	public int multiply(int i, int j){
 		return i*j;
 	}
-	public void demo(){
- 	 String s = null;
- 	 s.toString();
-	}
 }
