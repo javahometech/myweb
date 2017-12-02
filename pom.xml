@@ -40,7 +40,7 @@
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>
-			<url>http://52.43.226.114:8081/repository/maven-releases/</url>
+			<url>http://13.126.24.101:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
