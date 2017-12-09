@@ -7,6 +7,9 @@
 	<version>0.11.0</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+		<docker.image.prefix>kammana</docker.image.prefix>
+	</properties>	
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -50,7 +53,7 @@
 		</snapshotRepository>
   	</distributionManagement>
 	
-	<build>
+<build>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -61,6 +64,23 @@
                 <target>1.7</target>
             </configuration>
         </plugin>
+	    <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.11</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+                    <dockerDirectory>.</dockerDirectory>
+                    <serverId>docker-hub</serverId>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.war</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
     </plugins>
 </build>
 	
