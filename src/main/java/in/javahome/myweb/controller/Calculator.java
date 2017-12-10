@@ -3,8 +3,6 @@ package in.javahome.myweb.controller;
  * 
  */
 public class Calculator {
-	int i;
-	String name;
 	/*
 	 * @param i
 	 * @param j
@@ -16,8 +14,4 @@ public class Calculator {
 	public int multiply(int i, int j){
 		return i*j;
 	}
-// 	private void welcome(){
-// 	   String s = "Demo";
-// 	   String s2 = s.toString();	
-// 	}
 }
