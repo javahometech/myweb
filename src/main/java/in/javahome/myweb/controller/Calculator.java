@@ -16,8 +16,8 @@ public class Calculator {
 	public int multiply(int i, int j){
 		return i*j;
 	}
-	private void welcome(){
-	   String s = null;
-	   String s2 = s.toString();	
-	}
+// 	private void welcome(){
+// 	   String s = "Demo";
+// 	   String s2 = s.toString();	
+// 	}
 }
