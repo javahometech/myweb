@@ -1,5 +1,4 @@
 mv target/myweb*.war target/myweb.war
-scp -r target/myweb.war ubuntu@172.31.28.33:/tmp/
 
 sftp ubuntu@172.31.28.33 <<EOF
 
