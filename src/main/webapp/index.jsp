@@ -5,6 +5,6 @@
 	<h2 style="color: black;font-size: 30px" align="center">Your web application is successfully deployed</h2>
 	<h2 style="color: black;font-size: 30px" align="center">By Yamuna DevOPs Batch - changed from MyApp to myWeb </h2>
 	<h3 style="color: black;font-size: 30px" align="center">changed from jenkins build to test </h3>
-	<h3 style="color: black;font-size: 30px" align="center">changed from jenkins clean test for maven </h3>
+	<h4 style="color: black;font-size: 30px" align="center">changed from jenkins clean test for maven, added test stage in CPL as well </h4>
 </body>
 </html>
