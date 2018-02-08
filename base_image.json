@@ -4,21 +4,25 @@
      "access_key": "AKIAISO3LBT3LFHUZ2CQ",
      "secret_key": "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",
      "region": "ap-southeast-2",
-     "source_ami": "ami-942dd1f6",
+     "source_ami": "ami-38708c5a",
      "instance_type": "t2.micro",
      "ssh_username": "ec2-user",
-     "ami_name": "tomcat-ami"
+     "ami_name": "Base_Image_1.0.0"
       }],
    "provisioners": [{
     "type": "shell",
     "inline": [
-    "sleep 30",
-    "sudo yum update -y",
-    "sudo yum install git -y",
-    "sudo wget http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.27/src/apache-tomcat-8.5.27-src.tar.gz",
-    "sudo tar -xvf apache-tomcat-8.5.27-src.tar.gz"
-
+      "sleep 30",
+      "sudo yum update -y",
+      "sudo yum install git -y",
+      "sudo yum install java-1.8.0 java-1.8.0-openjdk-devel tomcat8-webapps -y",
+      "sudo yum install jenkins -y"
+    ]
+     },
+   {
+         "type":"file",
+         "source":"/var/lib/jenkins/workspace/Packer_Project/target/myweb-0.11.0.war",
+         "destination":"/usr/local/bin/packer"
+      }
   ]
-  }]
-
- }
+}
