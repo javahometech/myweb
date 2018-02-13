@@ -22,7 +22,7 @@
    {
          "type":"file",
          "source":"/var/lib/jenkins/workspace/Packer_Project/target/myweb-0.11.0.war",
-         "destination":"/usr/local/bin/packer"
+         "destination":"/tmp/"
       }
   ]
 }
