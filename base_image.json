@@ -15,8 +15,8 @@
       "sleep 30",
       "sudo yum update -y",
       "sudo yum install git -y",
-      "sudo yum install java-1.8.0 java-1.8.0-openjdk-devel tomcat8-webapps -y",
-      "sudo yum install jenkins -y"
+      "sudo yum install httpd -y",
+      "sudo chkconfig httpd on"
     ]
      },
    {
@@ -26,3 +26,4 @@
       }
   ]
 }
+
