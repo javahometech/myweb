@@ -1,17 +1,37 @@
-#! groovy
-node{
- stage('Source'){
-     git 'https://github.com/javahometech/myweb.git'
- }
- 
- stage('Build'){
-    // def mvnHome = tool 'maven3'
-    sh "mvn clean package" 
- }
- stage('Send Email'){
-     mail bcc: '', body: 'Demo Pipeline', cc: '', from: '', replyTo: '', subject: 'Pipeline Demo', to: 'hari.kammana@gmail.com'
- }
- stage('Archive'){
-     archiveArtifacts 'target/*.war'
- }
+try{
+    node {
+    echo 'Build Started'
+    stage('Checkout'){
+         git branch: 'one', credentialsId: 'bitbucket', url: 'https://github.com/javahometech/myweb'
+    }
+    stage('Test'){
+        sh 'mvn test'
+    }
+    stage('Package'){
+        sh 'mvn package hari'
+    }
+    stage('Deploy-dev'){
+        echo 'Deployed to dev'
+    }
+    stage('Deploy-stg'){
+        echo 'Deployed to stg'
+    }
+    stage('Deploy-prod'){
+        echo 'Deployed to prod'
+    }
+    
+    stage('Email'){
+     body_msg = ''' Jenkins Job success 
+   
+    '''+"$JOB_URL"+''' 
+    Thanks
+    Jenkins
+    '''
+   mail bcc: '', body: body_msg, cc: '', from: '', replyTo: '', subject: 'Job Success', to: 'hari.kammana@gmail.com'
+   
+    }
+  }
+}catch(error){
+   echo 'Some error' 
+   throw error
 }
