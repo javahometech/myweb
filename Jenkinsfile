@@ -8,7 +8,7 @@ try{
         sh 'mvn test'
     }
     stage('Package'){
-        sh 'mvn package hari'
+        sh 'mvn package'
     }
     stage('Deploy-dev'){
         echo 'Deployed to dev'
