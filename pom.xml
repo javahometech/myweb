@@ -36,12 +36,12 @@
 		<repository>
 			<id>nexus</id>
 			<name>Releases</name>
-			<url>http://172.18.0.1:8081/repository/maven-public/</url>
+			<url>http://172.18.0.1:8081/repository/maven2-hosted2-rel/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus</id>
 			<name>Snapshot</name>
-			<url>http://172.18.0.1:8081/repository/maven-public/</url>
+			<url>http://172.18.0.1:8081/repository/maven2-hosted2/</url>
 		</snapshotRepository>
   	</distributionManagement>
 	<build>
