@@ -1,37 +1,20 @@
-try{
-    node {
-    echo 'Build Started'
-    stage('Checkout'){
-         git branch: 'one', credentialsId: 'bitbucket', url: 'https://github.com/javahometech/myweb'
+node{
+    stage('SCM Checkout'){
+      git changelog: false, poll: false, url: 'https://github.com/javahometech/myweb'   
     }
+    def mvnHome = tool name: 'maven-3', type: 'maven'
     stage('Test'){
-        sh 'mvn test'
+         sh "${mvnHome}/bin/mvn test"
     }
     stage('Package'){
-        sh 'mvn package'
+         sh "${mvnHome}/bin/mvn package"
     }
-    stage('Deploy-dev'){
-        echo 'Deployed to dev'
+    stage('Deploy To Tomcat'){
+        sh '/home/ec2-user/scripts/sftp_tomcat.sh'
     }
-    stage('Deploy-stg'){
-        echo 'Deployed to stg'
-    }
-    stage('Deploy-prod'){
-        echo 'Deployed to prod'
+    stage('Email'){
+        mail bcc: '', body: '''Thanks
+Java Home''', cc: '', from: '', replyTo: '', subject: 'MyWeb Deployed', to: 'hari.kammana@gmail.com'
     }
     
-    stage('Email'){
-     body_msg = ''' Jenkins Job success 
-   
-    '''+"$JOB_URL"+''' 
-    Thanks
-    Jenkins
-    '''
-   mail bcc: '', body: body_msg, cc: '', from: '', replyTo: '', subject: 'Job Success', to: 'hari.kammana@gmail.com'
-   
-    }
-  }
-}catch(error){
-   echo 'Some error' 
-   throw error
 }
