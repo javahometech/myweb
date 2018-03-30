@@ -9,6 +9,9 @@ public class Calculator {
 	 * @return int
 	 */
 	public int add(int i, int j){
+		String s = null;
+		int i = 10;
+		int j = i/0;
 		return i+j;
 	}
 	public int multiply(int i, int j){
