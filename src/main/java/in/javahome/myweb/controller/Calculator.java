@@ -10,6 +10,7 @@ public class Calculator {
 	 */
 	public int add(int i, int j){
 		String s = null;
+		s.toString();
 		int i = 10;
 		int j = i/0;
 		return i+j;
