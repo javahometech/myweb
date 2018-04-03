@@ -1,12 +1,15 @@
----
-version: 0.0
-os: linux
-files:
-  - source: /target/myweb-0.12.1-SNAPSHOT.war
+--- 
+files: 
+  - 
     destination: /opt/tomcat/webapps
-hooks:
-  BeforeInstall:
-    - location: stop_tomcat.sh
-  AfterInstall:
-    - location: start_tomcat.sh
-      timeout: 30
+    source: /target/myweb-0.12.1-SNAPSHOT.war
+hooks: 
+  AfterInstall: 
+    - 
+      location: start_tomcat.sh
+  BeforeInstall: 
+    - 
+      location: stop_tomcat.sh
+os: linux
+timeout: 30
+version: 0.0
