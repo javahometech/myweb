@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /target/myweb.war
+  - source: /target/myweb-0.12.1-SNAPSHOT.war
     destination: /opt/tomcat/webapps
 hooks:
   BeforeInstall:
