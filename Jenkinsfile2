@@ -1,5 +1,5 @@
 node {
-    stage('Git'){
+    stage('Git')
       git 'https://github.com/javahometech/myweb'    
       
       
