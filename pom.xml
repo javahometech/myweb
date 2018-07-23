@@ -7,17 +7,17 @@
 	<version>0.15.0</version>
 	<name>myweb aplication</name>
 	<url>http://maven.apache.org</url>
-	<hari></hari>
-	<properties>
-		<docker.image.prefix>kammana</docker.image.prefix>
-	</properties>	
-	<dependencies>
-		<dependency>
+	<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
+	<properties>
+		<docker.image.prefix>kammana</docker.image.prefix>
+	</properties>	
+	<dependencies>
+		
 			<!-- Demo git -->
 		
 		<dependency>
