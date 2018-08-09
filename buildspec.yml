@@ -8,5 +8,5 @@ phases:
       - mvn clean package -DskipTests=true
 artifacts:
   files:
-    - target/myweb-0.15.0.war
+    - target/myweb*.war
   discard-paths: yes
