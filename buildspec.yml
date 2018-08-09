@@ -8,7 +8,7 @@ phases:
       - mvn clean package -DskipTests=true
   post_build:
     commands:
-      - mv target/myweb*.war target/myweb.war
+      - echo Build completed successfully
 artifacts:
   files:
     - target/myweb*/*
