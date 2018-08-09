@@ -6,6 +6,8 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - mvn clean package -DskipTests=true
+  post_build:
+    - mv target/myweb*.war target/myweb.war
 artifacts:
   files:
     - target/myweb*.war
