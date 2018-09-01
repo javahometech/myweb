@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - mvn install
+artifacts:
+  files:
+    - target/myweb-0.7.0.war
+  discard-paths: yes

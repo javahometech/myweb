@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 version: 0.1
+=======
+--- 
+files: 
+  - 
+    destination: /opt/tomcat/webapps
+    source: /target/myweb-0.12.1-SNAPSHOT.war
+hooks: 
+  AfterInstall: 
+    - 
+      location: start_tomcat.sh
+  BeforeInstall: 
+    - 
+      location: stop_tomcat.sh
+>>>>>>> 17e03ba53c2a0fb5af116f5bd57006e13268f562
 os: linux
-files:
-  - source: /index.html
-    destination: /tmp/
+timeout: 30
+version: 0.0
