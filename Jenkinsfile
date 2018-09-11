@@ -1,23 +1,33 @@
-node{
+try{
+	node{
+	    properties([parameters([choice(choices: ['master', 'dev', 'qa', 'staging'], description: 'Choose branch to build and deploy', name: 'gitBranch')]), pipelineTriggers([pollSCM('')])])
     stage('Git Checkout'){
-      git credentialsId: 'git-javahometech',
-          url: 'https://github.com/javahometech/my-app',
-		  branch: "master"
-    }
-    
-    stage('Maven Build'){
-		def mvnHome = tool name: 'maven3', type: 'maven'
-        sh "${mvnHome}/bin/mvn clean package"
-    }
-	
-	stage('Sonar Analysis'){
-		withCredentials([string(credentialsId: 'sonar-token', variable: 'sonarToken')]) {
-		def mvnHome = tool name: 'maven3', type: 'maven'
-		def sonarUrl = 'http://172.31.25.28:9000'
-		echo("${mvnHome}/bin/mvn sonar:sonar -Dsonar.host.url=${sonarUrl} -Dsonar.login=${sonarToken}")
-		sh "${mvnHome}/bin/mvn sonar:sonar -Dsonar.host.url=${sonarUrl} -Dsonar.login=${sonarToken}"
-        }
+		git credentialsId: 'github', 
+		    url: 'https://github.com/javahometech/my-app',
+			branch: "${params.gitBranch}"
 	}
+	
+	stage('Maven Build'){
+		sh 'mvn clean package'
+	}
+	stage('Deploy to Dev'){
+		sh 'mv target/*.war target/myweb.war'
+		sshagent(['tomcat-dev']) {
+			sh 'ssh ec2-user@172.31.17.196 rm -rf /opt/tomcat8/webapps/myweb*'
+		    sh 'scp target/myweb.war ec2-user@172.31.17.196:/opt/tomcat8/webapps/'
+		    sh 'ssh ec2-user@172.31.17.196 sudo service tomcat restart'
+		}
+	    slackSend channel: '#devops-2',
+				  color: 'good',
+				  message: "Job -  ${env.JOB_NAME}, Completed successfully Build URL is ${env.BUILD_URL}"
 
+
+	}
 }
 
+}catch(error){
+  slackSend channel: '#devops-2',
+				  color: 'danger',
+				  message: "Job -  ${env.JOB_NAME}, Failed, Build URL is ${env.BUILD_URL}"
+   error 'Something wrong'
+}
