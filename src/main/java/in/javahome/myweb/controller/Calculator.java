@@ -15,8 +15,6 @@ public class Calculator {
 	 * @return int
 	 */
 	public int add(int i, int j){
-		String s = null;
-		s.toString();
 		return i+j+10;
 	}
 	public int multiply(int i, int j){
