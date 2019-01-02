@@ -9,7 +9,7 @@ phases:
   post_build:
     commands:
       - echo Build completed successfully
-      - mv target/myweb*.war /target/myweb.war
+      - mv target/myweb*.war target/myweb.war
 artifacts:
   files:
     - target/myweb*.war
