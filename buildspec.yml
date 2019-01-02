@@ -13,3 +13,7 @@ artifacts:
   files:
     - target/myweb*.war
   discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.m2/**/*'
