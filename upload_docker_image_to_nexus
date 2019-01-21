@@ -1,0 +1,25 @@
+	node{
+	 
+	   stage('SCM Checkout'){
+			git branch: 'master', 
+				credentialsId: 'javahometech',
+				url: 'https://github.com/javahometech/myweb'
+	   }
+	   stage('Maven Build'){
+			def mvnHome = tool name: 'maven3', type: 'maven'
+			sh "${mvnHome}/bin/mvn clean package"
+			sh 'mv target/myweb*.war target/myweb.war'
+	   }
+	   stage('Build Docker Image'){
+		 sh 'docker build -t 13.232.82.187:8083/myweb:2.0.0 .'
+	   }
+	   stage('Upload To Nexus'){
+		 
+		  withCredentials([string(credentialsId: 'nexus', variable: 'nexusPwd')]) {
+				sh "docker login -u admin -p ${nexusPwd} 13.232.82.187:8083"
+		  }
+		  
+		  sh "docker push 13.232.82.187:8083/myweb:2.0.0"
+	   }
+	   
+	}
