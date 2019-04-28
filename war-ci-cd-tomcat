@@ -1,0 +1,28 @@
+node('master'){
+
+	stage('SCM Checkout'){
+	    git branch: 'master', 
+			credentialsId: 'github', 
+			url: 'https://github.com/javahometech/myweb'
+	}
+	
+	stage('MVN Build'){
+		def mvnHome = tool name: 'maven3', type: 'maven'
+		def mvn = "$mvnHome/bin/mvn" 
+	    sh label: '', script: "$mvn clean package"
+	}
+	
+	stage('Deploy-Dev'){
+	  // copy war from here to remote tomcat// ssh agent plugin
+	  // restart tomcat
+	  
+	  sshagent(['tomcat-dev']) {
+	    sh "mv target/myweb*.war target/myweb.war"
+		
+		sh "scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@172.31.11.2:/opt/tomcat8/webapps/"
+		
+		sh "ssh ec2-user@172.31.11.2 /opt/tomcat8/bin/startup.sh"
+	  }
+	}
+	
+}
