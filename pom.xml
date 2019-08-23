@@ -34,6 +34,14 @@
 		    <url>http://13.233.230.166:8081/repository/maven-releases/</url>
 		</repository>
   	</distributionManagement>
+	
+	<pluginRepositories>
+	    <pluginRepository>    
+		<id>maven1</id>
+		<name>Maven.org</name>
+		<url>http://repo1.maven.org/maven2</url>
+	    </pluginRepository>
+	</pluginRepositories>
 
 	
 </project>
