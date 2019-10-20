@@ -1,33 +1,96 @@
-try{
-	node{
-	    properties([parameters([choice(choices: ['master', 'dev', 'qa', 'staging'], description: 'Choose branch to build and deploy', name: 'gitBranch')]), pipelineTriggers([pollSCM('')])])
-    stage('Git Checkout'){
-		git credentialsId: 'github', 
-		    url: 'https://github.com/javahometech/my-app',
-			branch: "${params.gitBranch}"
-	}
+pipeline{
+	agent any
 	
-	stage('Maven Build'){
-		sh 'mvn clean package'
+	environment {
+		PATH = "${PATH}:${getMavenPath()}"
+		DOCKER_TAG = "${getLatestCommitId()}"
+		NEXUS_HOST = "172.31.45.145:8083"
+		DEV_IP = "172.31.6.150"
 	}
-	stage('Deploy to Dev'){
-		sh 'mv target/*.war target/myweb.war'
-		sshagent(['tomcat-dev']) {
-			sh 'ssh ec2-user@172.31.17.196 rm -rf /opt/tomcat8/webapps/myweb*'
-		    sh 'scp target/myweb.war ec2-user@172.31.17.196:/opt/tomcat8/webapps/'
-		    sh 'ssh ec2-user@172.31.17.196 sudo service tomcat restart'
+	stages{
+		stage('SCM - Checkout'){
+			steps{
+				git url: 'https://github.com/javahometech/myweb'
+			
+			}
 		}
-	    slackSend channel: '#devops-2',
-				  color: 'good',
-				  message: "Job -  ${env.JOB_NAME}, Completed successfully Build URL is ${env.BUILD_URL}"
+		
+		stage('sonar and maven'){
+			steps{
+			
+				parallel sonarReport: {
+				
+					withSonarQubeEnv('sonar-7.5') {
+						sh "mvn sonar:sonar"
+					}
+					
+					timeout(time: 1, unit: 'HOURS') {
+						script{
+							def qg = waitForQualityGate()
+							if (qg.status != 'OK') {
+								error "Pipeline aborted due to quality gate failure: ${qg.status}"
+							}
+						}
+					}
+				}, mavenBuild: {
+					sh "mvn clean package"		
+				}
+			
+			
+			}
+		
+		}
+		
+	
+		stage('Docker - Build'){
+			steps{
+			   withCredentials([string(credentialsId: 'nexus-docker', variable: 'nexusPwd')]) {
+					sh "docker login -u admin -p ${nexusPwd} ${NEXUS_HOST}"
+			   }
+			   
+			   sh "docker build . -t ${NEXUS_HOST}/myweb:${DOCKER_TAG} "
+			}
+		}
+		
+		stage('Docker - Push'){
+			steps{
+			   sh "docker push ${NEXUS_HOST}/myweb:${DOCKER_TAG}"
+			}
+		}
+		
+		stage('Docker - Deploy - Dev'){
+			steps{
+			    // input 'Do you want to deploy to dev servers?'
+				
+				sh returnStatus: true, script: "ssh ec2-user@${DEV_IP} docker rm -f myweb"
+				withCredentials([string(credentialsId: 'nexus-docker', variable: 'nexusPwd')]) {
+					sh returnStatus: true, script: "ssh ec2-user@${DEV_IP} docker login -u admin -p ${nexusPwd} ${NEXUS_HOST}"
+			    }
+				
+				sh returnStatus: true, script: 'ssh ec2-user@${DEV_IP} docker rmi $(docker images | grep 172.31.45.145:8083/myweb | awk \'{print $3}\')'
+				sh "ssh ec2-user@${DEV_IP} docker run -d -p 8080:8080 --name=myweb ${NEXUS_HOST}/myweb:${DOCKER_TAG}"	
+			}
+		}
+	
+	}
+	post{
+		always{
+			mail  body: """Hi Dev Team,
+	${env.BUILD_URL}
+This Job ran 
 
-
+Thanks,
+DevOps Team""", subject: "${env.JOB_NAME} Ran", to: 'hari.kammana@gmail.com'
+		}
 	}
 }
 
-}catch(error){
-  slackSend channel: '#devops-2',
-				  color: 'danger',
-				  message: "Job -  ${env.JOB_NAME}, Failed, Build URL is ${env.BUILD_URL}"
-   error 'Something wrong'
+def getMavenPath(){
+	def mvnHome = tool name: 'maven-3', type: 'maven'
+	return "${mvnHome}/bin"
+}
+
+def getLatestCommitId(){
+	def commitId = sh returnStdout: true, script: 'git rev-parse HEAD'
+	return commitId
 }
