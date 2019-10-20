@@ -8,39 +8,47 @@ pipeline{
 		DEV_IP = "172.31.6.150"
 	}
 	stages{
+	/*
 		stage('SCM - Checkout'){
 			steps{
 				git url: 'https://github.com/javahometech/myweb'
 			
 			}
 		}
-		
-		stage('sonar and maven'){
-			steps{
-			
-				parallel sonarReport: {
-				
-					withSonarQubeEnv('sonar-7.5') {
-						sh "mvn sonar:sonar"
-					}
-					
-					timeout(time: 1, unit: 'HOURS') {
-						script{
-							def qg = waitForQualityGate()
-							if (qg.status != 'OK') {
-								error "Pipeline aborted due to quality gate failure: ${qg.status}"
+	*/	
+	
+	    stage('sonar and maven'){
+			parallel{
+				stage('Sonar Report'){
+					steps{
+						withSonarQubeEnv('sonar-7.5') {
+							sh "mvn sonar:sonar"
+							
+							timeout(time: 1, unit: 'HOURS') {
+							script{
+								def qg = waitForQualityGate()
+								if (qg.status != 'OK') {
+									error "Pipeline aborted due to quality gate failure: ${qg.status}"
+								}
 							}
-						}
+							}
+					    }
+					
 					}
-				}, mavenBuild: {
-					sh "mvn clean package"		
+				
 				}
-			
+				
+				stage('Maven Build'){
+					steps{
+					
+						sh "mvn clean package"
+					}
+				
+				}
 			
 			}
 		
-		}
-		
+		}	
 	
 		stage('Docker - Build'){
 			steps{
