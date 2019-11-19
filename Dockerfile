@@ -4,3 +4,4 @@ COPY target/myweb*.war /usr/local/tomcat/webapps/myweb.war
 
 # Git webhook trigger demo
 # TO test github push trigger hari
+# Testing Github Actions
