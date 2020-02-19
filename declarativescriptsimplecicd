@@ -1,0 +1,35 @@
+pipeline{
+	agent any
+
+	environment{
+		PATH = "/opt/maven3/bin:$PATH"
+	}
+
+	stages{
+		stage("Git Checkout"){
+			steps{
+				git credentialsId: 'c142c9ab-c6eb-4d24-ac7f-024181e0ad69', url: 'https://github.com/javahometech/myweb.git'
+				}
+			}
+			stage("Maven BUild"){
+				steps{
+					sh "mvn clean package"
+					sh "mv target/*.war target/myweb.war"
+				}
+			}
+			stage("Deploy on Tomcat"){
+				steps{
+					sshagent(['9dda1747-63ca-441e-89fb-a510f18c245a']) {
+					sh """
+						scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@172.31.87.151:/opt/tomcat8/webapps/
+
+						ssh ec2-user@172.31.87.151 /opt/tomcat8/bin/shutdown.sh
+
+						ssh ec2-user@172.31.87.151 /opt/tomcat8/bin/startup.sh
+
+					"""
+					}
+				}
+			}
+		}
+	}
