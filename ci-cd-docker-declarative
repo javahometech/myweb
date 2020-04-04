@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Docker Build'){
             steps{
-                sh "docker build -t kammana/mywebapp:${dockerTag()} ."
+                sh "docker build . -t kammana/mywebapp:${dockerTag()}"
             }
         }
         stage('DockerHub Push Image'){
