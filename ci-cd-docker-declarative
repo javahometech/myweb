@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    tools {
+        maven 'maven3'
+    }
+    stages{
+        stage('Maven Build'){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage('Docker Build'){
+            steps{
+                sh "docker build -t kammana/mywebapp:${dockerTag()} ."
+            }
+        }
+        stage('DockerHub Push Image'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerPwd')]) {
+                    sh "docker login -u kammana -p ${dockerPwd}"
+                }
+                
+                sh "docker push kammana/mywebapp:${dockerTag()}"
+            }
+        }
+    }
+}
+
+def dockerTag(){
+    def commitId = sh returnStdout: true, script: 'git rev-parse --short HEAD'
+	return commitId
+}
