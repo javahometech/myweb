@@ -27,7 +27,7 @@ pipeline{
             steps{
                 sshagent(['docker-host-dev']) {
                     script{
-                        def dkrRun = "docker run -d --name mywebapp kammana/mywebapp:${dockerTag()}"
+                        def dkrRun = "docker run -d -p 8080:8080 --name mywebapp kammana/mywebapp:${dockerTag()}"
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.47.245 ${dkrRun}"
                     }
                 }
