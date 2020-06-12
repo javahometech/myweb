@@ -20,4 +20,4 @@ spec:
         ports:
         - containerPort: 8080
       imagePullSecrets:
-        name: nexuspwd
+      - name: nexuspwd
