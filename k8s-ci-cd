@@ -1,0 +1,47 @@
+pipeline{
+    agent any
+    tools {
+        maven 'maven3'
+    }
+    stages{
+        stage('SCM Checkout'){
+            steps{
+                git 'https://github.com/javahometech/myweb'
+            }
+        }
+        stage('Maven Build'){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage('Docker Build'){
+            steps{
+                sh "docker build . -t 13.233.112.225:8083/myweb:${dockerTag()}"
+            }
+        }
+        stage('Docker Push Nexus'){
+            steps{
+                withCredentials([string(credentialsId: 'nexuss3', variable: 'nexusPwd')]) {
+                    sh "docker login -u admin -p ${nexusPwd} 13.233.112.225:8083"
+                    sh "docker push 13.233.112.225:8083/myweb:${dockerTag()}"
+                }
+                
+            }
+        }
+        stage('Deploy k8s'){
+        steps{
+            sh """
+	            VERSION=${dockerTag()}
+	            sed -i "s/commit_hash/\$VERSION/g" k8s/deployment.yml
+	       """
+            kubernetesDeploy configs: 'k8s/*.yml', 
+                       kubeconfigId: 'kubernetess-cluster'
+      }
+    }
+    }
+}
+
+def dockerTag(){
+    def commitId = sh returnStdout: true, script: 'git rev-parse --short HEAD'
+	  return commitId
+}
