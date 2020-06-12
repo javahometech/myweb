@@ -19,3 +19,5 @@ spec:
         image: 172.31.43.244:8083/myweb:commit_hash
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+        name: nexuspwd
