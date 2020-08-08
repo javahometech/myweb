@@ -1,11 +1,6 @@
 node {
     stage('Git'){
-      git 'https://github.com/javahometech/myweb'    
-      
-      
-      
-      
-      
+      git 'https://github.com/javahometech/myweb'      
     }
     
     stage('Maven Build'){
