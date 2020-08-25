@@ -32,7 +32,7 @@ grow, mark and tweak your common history
    rebase     Reapply commits on top of another base tip
    tag        Create, list, delete or verify a tag object signed with GPG
 
-collaborate (see also: git help workflows)
+collaborate (see also: git help workflows). test
    fetch      Download objects and refs from another repository
    pull       Fetch from and integrate with another repository or a local branch
    push       Update remote refs along with associated objects
