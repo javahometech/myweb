@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	<version>8.3.2</version>
 	<name>Java Home myweb</name>
-	<url>http://maven.apache.org</url>
+	<url>http://maven.apache.org<url>
 	
 	
 	
