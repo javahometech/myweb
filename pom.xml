@@ -23,6 +23,9 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<properties>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
 
 	</dependencies>
 	
