@@ -1,0 +1,86 @@
+[root@ip-172-31-17-56 ec2-user]# history
+    1  cat > ravi
+    2  ls
+    3  ls -l
+    4  cat ravi
+    5  cat >> ravi
+    6  cat ravi
+    7  touch sai
+    8  ls
+    9  ls -l
+   10  cat ravi > sai
+   11  cat sai
+   12  touch {a..k}
+   13  ls
+   14  ls -l
+   15  mkdir sachin
+   16  ls
+   17  ls -l
+   18  cp ravi sachin/
+   19  ls
+   20  cd sachin/
+   21  pwd
+   22  ls
+   23  cat ravi
+   24  cd ..
+   25  pwd
+   26  ls
+   27  mv sai sachin/
+   28  ls
+   29  cd sachin/
+   30  pwd
+   31  ls
+   32  cat sai
+   33  cd ..
+   34  pwd
+   35  ls
+   36  rm -rf k
+   37  ls
+   38  ls
+   39  mkdir sehwag
+   40  ls
+   41  ls -l
+   42  cd sachin/
+   43  pwd
+   44  mkdir rahul
+   45  ls
+   46  cd rahul/
+   47  pwd
+   48  mkdir kohli
+   49  ls
+   50  cd kohli/
+   51  pwd
+   52  mkdir dhoni
+   53  cd dhoni/
+   54  pwd
+   55  cd ..
+   56  pwd
+   57  cd ..
+   58  pwd
+   59  cd ..
+   60  pwd
+   61  cd ..
+   62  pwd
+   63  cd ..
+   64  pwd
+   65  cd ..
+   66  ls
+   67  cd /home/ec2-user/
+   68  pwd
+   69  mkdir -p sachin/rahul/kohli/dhoni/ponting
+   70  cd sachin/rahul/kohli/dhoni/ponting
+   71  pwd
+   72  cd ../../../../../
+   73  pwd
+   74  cd sachin/rahul/kohli/
+   75  pwd
+   76  cd ../../
+   77  pwd
+   78  cd ..
+   79  ls
+   80  mv sehwag/ harbajan
+   81  ls
+   82  rm -rf harbajan/
+   83  ls
+   84  history
+[root@ip-172-31-17-56 ec2-user]#
