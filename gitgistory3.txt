@@ -1,0 +1,67 @@
+501  git clone https://github.com/srinivas1987devops/myweb.git
+  502  cd myweb/
+  503  git branch
+  504  git branch dev1
+  505  git branch fet1
+  506  git checkout fet1
+  507  touch b1
+  508  git add .
+  509  git commit -m 'b1'
+  510  git checkout dev1
+  511  git merge fet1
+  512  git checkout master
+  513  git merge dev1
+  514  git push origin master
+  515  git checkout fet1
+  516  touch b2
+  517  git add .
+  518  git commit -m 'b2'
+  519  git checkout dev1
+  520  touch b3
+  521  git add .
+  522  git commit -m 'b3'
+  523  git merge fet1
+  524  git checkout master
+  525  touch b4
+  526  git add .
+  527  git commit -m 'b4'
+  528  git merge dev1
+  529  git push origin master
+  530  ls
+  531  rm -rf b1
+  532  ls
+  533  git checkout fet1
+  534  touch cr1
+  535  git add .
+  536  git commit -m 'cr1'
+  537  git log
+  538  git checkout dev1
+  539  git cherry-pick 0cb22d174d
+  540  git log
+  541  git checkout master
+  542  git cherry-pick b6cf8a34edf
+  543  git log
+  544  git push origin master
+  545  git pull origin master
+  546  git push origin master
+  547  git tag
+  548  git tag v1.0
+  549  git tag
+  550  git push origin v1.0
+  551  git tag v1.1
+  552  git push origin v1.1
+  553  git tag
+  554  git tag -d v1.1
+  555  git tag
+  556  git push origin -d v1.1
+  557  touch t1
+  558  git add .
+  559  git commit -m '1'
+  560  git log
+  561  git tag v1.3 6419a2c2b6
+  562  git tag
+  563  git push origin v1.3
+  564  history
+
+srinu@DESKTOP-OAV8881 MINGW64 ~/Desktop/myweb (master)
+$
