@@ -1,0 +1,55 @@
+[root@ip-172-31-24-248 ec2-user]# history
+    1  pwd
+    2  useradd jyothi
+    3  useradd deepa
+    4  useradd pavan
+    5  useradd vamsi
+    6  useradd srini
+    7  useradd chiru
+    8  useradd bhavani
+    9  useradd aravind
+   10  cat /etc/passwd
+   11  head /etc/passwd
+   12  tail /etc/passwd
+   13  more /etc/passwd
+   14  less /etc/passwd
+   15  vi jyothi
+   16  cat jyothi
+   17  touch abc
+   18  touch deepa
+   19  ls
+   20  vi abc
+   21  cat abc
+   22  vi jyothi
+   23  cat jyothi
+   24  vi abc
+   25  cat abc
+   26  cat > omni
+   27  ls
+   28  cat omni
+   29  touch {a..m}
+   30  ls
+   31  mkdir sachin yuvi vasu sundar yashoda mahesh
+   32  ls
+   33  ls -l
+   34  ls -l | grep m
+   35  ls -l | grep yuvi
+   36  ls -l | grep deepa
+   37  ls -l | grep JYOTHI
+   38  ls -l | grep -i JYOTHI
+   39  ls -l | grep -i SUNDAR
+   40  mkdir SAI
+   41  ls -l | grep -i sai
+   42  cat /etc/passwd | grep aravind
+   43  cat /etc/passwd | grep pavan
+   44  cat /etc/passwd | grep srini
+   45  find / -name SAI
+   46  find / -name abc
+   47  find / -user srini
+   48  find / -user pavan
+   49  find / -name yuvi
+   50  history
+[root@ip-172-31-24-248 ec2-user]#
+[root@ip-172-31-24-248 ec2-user]#
+[root@ip-172-31-24-248 ec2-user]#
+[root@ip-172-31-24-248 ec2-user]#
