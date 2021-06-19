@@ -45,3 +45,4 @@ def getLatestCommitId(){
   return commitId
 }
 }
+}
