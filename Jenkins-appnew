@@ -1,10 +1,10 @@
 pipeline{
   agent any
   stages{
-        stage("Git Checkout"){
-            steps{
-                git credentialsId: 'javahome2', url: 'https://github.com/srinivas1987devops/myweb.git'
-            }
+    stage("Git Checkout"){
+      steps{
+        git credentialsId: 'javahome2', url: 'https://github.com/srinivas1987devops/myweb.git'
+      }
 
   stages{
     stage('Maven Build'){
