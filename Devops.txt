@@ -1,0 +1,126 @@
+Devops is a culture / Software developement approach , which involves continueosly combing the code , continueosly testing the code ,
+
+continueosly integrating the tools , continueosly deploying the applications, continueosly monitoring the applications through out entire 
+
+its software developement life cycle.
+
+===================================================================================================
+
+Continueos Integration :
+
+CI means continueosly developing the code , continueosly combining the code, so that we can fix the bugs as per the time line 
+and also we can reduce the time during the release in your line.
+
+
+Continueos Delivery: ( Manual approach)
+
+It is nothing but what ever we generate the package into your environment. suppose If I want continueosly delivery into each and 
+every environment. If we can do review and then we can deploy into the environment. 
+
+
+continueos Deployment :( with out manual)
+
+CD is peace of practice to design ensure the code can be rapidly or safely deployed into live environment production by delivering each 
+and every change in the production.
+
+
+Devops workflow / Jenkins work flow :
+
+1. code commit (github)
+
+2. Build ( maven)(war / ear / jar )
+
+3. code quality ( Sonarqube --->> critical / major / blocker )
+
+4. release package (war / ear / jar )
+
+5. uploading package into Nexus ( Artifactory)
+
+6. deployment ( tomcat ) ---->> dev/qa/uat/prod
+
+7. Test
+
+
+
+===========================
+
+SDLC : software developement life cycle
+
+1. waterfall model (dev and client )--->> 24/7 --->> end user-->> issues-->> overcome  ==>>> Manual approach.
+
+2. agile methodolgies : dev and ops -->> client--->>24/7 -->endusers-->>>issues
+
+Build and release engineers
+
+
+GIT , MAVEN , TOMCAT , JENKINS , SONARQUBE , NEXUS , ANSIBLE , DOCKER ,
+
+Devops: ??  --->>> Automation tools ==>> devops engineer.
+
+
+Devops is a culture / Software developement approach , which involves continueosly combing the code , continueosly testing the code ,
+
+continueosly integrating the tools , continueosly deploying the applications, continueosly monitoring the applications through out entire 
+
+its software developement life cycle.
+
+
+dev --->> code --->> github(push) --->> time save , bugs fix easy 
+
+deploying the applications --->> DEV / QA / UAT / PROD
+
+cloudwatch , newrelic --->>> moniroing tools..
+
+Dev (java) testers(test) ops (ours)====>> CI , CD , CM
+
+
+
+git config --global user.name “UpenderGudipudi”
+
+git config --global user.email “upenderaws21@gmail.com”
+
+=====================================================
+
+git config --global user.name “rohithkumar893”
+
+git config --global user.email “rohithkumar893@gmail.com”
+
+
+git push origin master ==>> githubaccountname and github passsowrd ==>>> remote.
+
+
+
+  501  git clone https://github.com/srinivas1987devops/myweb.git
+  502  ls
+  503  cd myweb/
+  504  ls
+  505  touch upendra123
+  506  git status
+  507  git add .
+  508  git status
+  509  git commit -m 'u123'
+  510  git push origin master
+  511  history
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
