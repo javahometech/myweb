@@ -7,3 +7,4 @@ Autoscaling group
 vpc peering
 
 transitgateway
+vpc subnet rtb igw sg
