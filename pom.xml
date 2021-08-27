@@ -28,14 +28,9 @@
 	</dependencies>
 	
 	<distributionManagement>
-		 <snapshotRepository>
-		    <id>nexusRepo</id>
-		    <url>http://13.233.230.166:8081/repository/maven-snapshots/</url>
-		 </snapshotRepository>
-		
-		<repository>
-		    <id>nexusRepo</id>
-		    <url>http://13.233.230.166:8081/repository/maven-releases/</url>
+		 <repository>
+		    <id>nexus</id>
+		    <url>http://18.116.234.59:8081/repository/Myfirstproject/</url>
 		</repository>
   	</distributionManagement>
 	
