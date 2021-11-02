@@ -12,3 +12,7 @@ sonarqube
 ansible
 
 docker
+
+nexus
+
+k8's
