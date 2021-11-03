@@ -16,3 +16,6 @@ docker
 nexus
 
 k8's
+cloud watch
+newrelic
+datadog
