@@ -38,9 +38,9 @@ pipeline{
                   version: '8.2.0'  
               }
             }
-       stage('Build Docker Image'){
-            sh 'docker build -t deepikac2021/spring-boot-mongo .'
-        }
+    stage('Build Docker Image'){
+        sh 'docker build -t deepikac2021/spring-boot-mongo .'
+    }
         
     }
 }
