@@ -39,21 +39,9 @@ pipeline{
               }
             }
         stage('Build Docker Image'){
-        sh 'docker build -t deepikac2021/spring-boot-mongo .'
+            sh 'docker build -t deepikac2021/spring-boot-mongo .'
     }
-    stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
-            sh "docker login -u deepikac2021 -p ${DOCKER_HUB_CREDENTIALS}"
-        }
-        sh 'docker push deepikac2021/spring-boot-mongo'
-    }
-    stage("Deploy To Kuberates Cluster"){
-       kubernetesDeploy(
-         configs: 'springBootMongo.yml', 
-         kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
-         enableConfigSubstitution: true
-        )
-     }
+        
     }
 }
 
