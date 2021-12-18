@@ -23,30 +23,30 @@ pipeline{
             steps{
                   nexusArtifactUploader artifacts: [
                        [
-                            artifactId: 'simple-app', 
+                            artifactId: 'myweb', 
                             classifier: '', 
-                            file: "target/simple-app-1.0.0.war", 
+                            file: "target/myweb-8.2.0.war", 
                             type: 'war'
                        ]
                   ], 
                   credentialsId: 'nexus3', 
                   groupId: 'in.javahome', 
-                  nexusUrl: '172.31.39.126:8081', 
+                  nexusUrl: '172.31.41.6:8081', 
                   nexusVersion: 'nexus3', 
                   protocol: 'http', 
-                  repository: 'javahome-release', 
-                  version: '1.0.0'  
+                  repository: 'sample-releases', 
+                  version: '8.2.0'  
               }
             }
         stage("deploy-dev"){
             steps{
                 sshagent(['tomcat-new']) {
                 sh """
-                    scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@172.31.47.207:/home/ec2-user/apache-tomcat-9.0.56/webapps/
+                    scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@172.31.45.234:/home/ec2-user/apache-tomcat-9.0.56/webapps/
                     
-                    ssh ec2-user@172.31.47.207 /home/ec2-user/apache-tomcat-9.0.56/bin/shutdown.sh
+                    ssh ec2-user@172.31.45.234 /home/ec2-user/apache-tomcat-9.0.56/bin/shutdown.sh
                     
-                    ssh ec2-user@172.31.47.207 /home/ec2-user/apache-tomcat-9.0.56/bin/startup.sh
+                    ssh ec2-user@172.31.45.234 /home/ec2-user/apache-tomcat-9.0.56/bin/startup.sh
                 
                 """
             }
