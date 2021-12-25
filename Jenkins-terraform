@@ -1,0 +1,41 @@
+pipeline {
+
+     parameters {
+        string(name: 'environment', defaultValue: 'Prod', description: 'Workspace/Environment file to use for deployment')
+        string(name: 'region', defaultValue: 'us-east-1', description: 'Workspace/region file to use for deployment')
+        
+
+    }     
+    agent any
+    stages {
+        stage('Download terraform code from Gihub') { 
+            steps {
+                git credentialsId: 'javahome2', url: 'https://github.com/lakshmiprasad2019/myweb.git'
+            }    
+        }
+        stage('Terraform Ininitialization') {
+            steps {
+                sh """
+                    cd /var/lib/jenkins/workspace/aaa
+                    terraform init -reconfigure
+                """    
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                sh """
+                    cd /var/lib/jenkins/workspace/aaa
+                    terraform plan -out=plan.${BUILD_NUMBER} -var profile=${params.environment} -var region=${params.region}
+                """
+            }    
+        }
+        stage('Terraform Apply') {
+            steps {
+                sh """
+                    cd /var/lib/jenkins/workspace/aaa
+                    terraform apply plan.${BUILD_NUMBER}
+                """
+            }
+        }
+    }    
+}
