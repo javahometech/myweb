@@ -16,7 +16,7 @@ pipeline {
         stage('Terraform Ininitialization') {
             steps {
                 sh """
-                    cd /var/lib/jenkins/workspace/aaa
+                    cd /var/lib/jenkins/workspace/terraform
                     terraform init -reconfigure
                 """    
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 sh """
-                    cd /var/lib/jenkins/workspace/aaa
+                    cd /var/lib/jenkins/workspace/terraform
                     terraform apply plan.${BUILD_NUMBER}
                 """
             }
