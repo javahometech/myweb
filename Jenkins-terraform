@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh """
                     cd /var/lib/jenkins/workspace/terraform
-                    terraform init -reconfigure
+                    sudo terraform init -reconfigure
                 """    
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh """
                     cd /var/lib/jenkins/workspace/terraform
-                    terraform plan -out=plan.${BUILD_NUMBER} -var profile=${params.environment} -var region=${params.region}
+                    sudo terraform plan -out=plan.${BUILD_NUMBER} -var profile=${params.environment} -var region=${params.region}
                 """
             }    
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh """
                     cd /var/lib/jenkins/workspace/terraform
-                    terraform apply plan.${BUILD_NUMBER}
+                    sudo terraform apply plan.${BUILD_NUMBER}
                 """
             }
         }
