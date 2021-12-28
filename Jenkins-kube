@@ -54,7 +54,7 @@ pipeline{
         stage("Deploy To Kuberates Cluster"){
               steps{
                    kubernetesDeploy(
-                   configs: 'springBootMongo.yml', 
+                   configs: 'springBoot.yml', 
                    kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
                    enableConfigSubstitution: true
             )
