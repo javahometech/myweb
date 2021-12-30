@@ -5,3 +5,6 @@ vpc subnet
 rtb
 
 nat and natgateway
+maven
+tomcat
+jenkins
