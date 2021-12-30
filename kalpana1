@@ -8,3 +8,7 @@ nat and natgateway
 maven
 tomcat
 jenkins
+sonarQube
+nexus
+ansible
+docker
