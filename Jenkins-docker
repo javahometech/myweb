@@ -41,6 +41,8 @@ pipeline{
         stage('Build Docker Image'){
             steps{
                  sh 'docker build -t deepikac2021/spring-boot-mongo .'
+                 sh 'docker build -t tomcat:${BUILD_NUMBER} .'
+                 sh 'docker run -itd --name srini22 -p 2600:8080 tomcat:${BUILD_NUMBER}'
              }
          }
         stage('Push Docker Image'){
