@@ -1,5 +1,5 @@
 ---
- - hosts: 172.31.34.251
+ - hosts: webservers
    tasks:
      - name: copy the file from local to remote
        copy:
