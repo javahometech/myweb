@@ -1,0 +1,7 @@
+---
+ - hosts: webservers
+   tasks:
+     - name: copy the file from local to remote
+       copy:
+         src: target/myweb-8.2.0.war
+         dest: /usr/local/apache-tomcat-9.0.58/webapps/
