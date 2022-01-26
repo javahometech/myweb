@@ -38,20 +38,11 @@ pipeline{
                   version: '8.2.0'  
               }
             }
-        stage("deploy-dev"){
+        stage("Execute Ansible"){
             steps{
-                sshagent(['tomcat-new']) {
-                sh """
-                    scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@172.31.40.204:/home/ec2-user/apache-tomcat-9.0.58/webapps/
-                    
-                    ssh ec2-user@172.31.40.204 /home/ec2-user/apache-tomcat-9.0.58/bin/shutdown.sh
-                    
-                    ssh ec2-user@172.31.40.204 /home/ec2-user/apache-tomcat-9.0.58/bin/startup.sh
-                
-                """
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'dev.in', playbook: 'copy.yml'
             }
-            
-            }
+           
         }
     }
 }

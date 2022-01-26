@@ -31,27 +31,29 @@ pipeline{
                   ], 
                   credentialsId: 'nexus3', 
                   groupId: 'in.javahome', 
-                  nexusUrl: '172.31.38.33:8081', 
+                  nexusUrl: '172.31.38.137:8081', 
                   nexusVersion: 'nexus3', 
                   protocol: 'http', 
                   repository: 'sample-releases', 
                   version: '8.2.0'  
               }
             }
-        stage("deploy-dev"){
+        stage('Build Docker Image'){
             steps{
-                sshagent(['tomcat-new']) {
-                sh """
-                    scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@172.31.40.204:/home/ec2-user/apache-tomcat-9.0.58/webapps/
-                    
-                    ssh ec2-user@172.31.40.204 /home/ec2-user/apache-tomcat-9.0.58/bin/shutdown.sh
-                    
-                    ssh ec2-user@172.31.40.204 /home/ec2-user/apache-tomcat-9.0.58/bin/startup.sh
-                
-                """
+                 sh 'docker build -t deepikac2021/spring-boot-mongo .'
+                 sh 'docker build -t tomcat:${BUILD_NUMBER} .'
+                 sh 'docker run -itd --name srini24 -p 2800:8080 tomcat:${BUILD_NUMBER}'
+             }
+         }
+        stage('Push Docker Image'){
+             steps{
+                  withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+                      sh "docker login -u deepikac2021 -p ${DOCKER_HUB_CREDENTIALS}"
             }
-            
-            }
+            sh 'docker push deepikac2021/spring-boot-mongo'
         }
+      }
+        
+        
     }
 }
