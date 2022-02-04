@@ -10,7 +10,7 @@
 	
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
-		<sonar.host.url>http://13.115.212.212:9000/</sonar.host.url>
+		<sonar.host.url>http://18.181.96.215:9000/</sonar.host.url>
 
 	</properties>
 	<dependencies>
