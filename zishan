@@ -7,3 +7,7 @@
 vpc
 subnet
 igw
+elb
+clb
+aln
+nlb
