@@ -10,3 +10,6 @@ s3
 alb
 nlb
 clb
+nat
+natgatewy
+transigateway
