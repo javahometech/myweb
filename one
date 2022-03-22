@@ -5,3 +5,8 @@ igw
 sg
 elb
 vpc peering
+asg
+s3
+alb
+nlb
+clb
