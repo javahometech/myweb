@@ -31,7 +31,7 @@ pipeline{
                   ], 
                   credentialsId: 'nexus3', 
                   groupId: 'in.javahome', 
-                  nexusUrl: '172.31.42.219:8081', 
+                  nexusUrl: '172.31.7.9:8081', 
                   nexusVersion: 'nexus3', 
                   protocol: 'http', 
                   repository: 'sample-releases', 
@@ -42,11 +42,11 @@ pipeline{
             steps{
                 sshagent(['tomcat-new']) {
                 sh """
-                    scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@172.31.39.109:/home/ec2-user/apache-tomcat-9.0.60/webapps/
+                    scp -o StrictHostKeyChecking=no target/myweb-8.2.0.war  ec2-user@172.31.4.173:/home/ec2-user/apache-tomcat-9.0.62/webapps/
                     
-                    ssh ec2-user@172.31.39.109 /home/ec2-user/apache-tomcat-9.0.60/bin/shutdown.sh
+                    ssh ec2-user@172.31.4.173 /home/ec2-user/apache-tomcat-9.0.62/bin/shutdown.sh
                     
-                    ssh ec2-user@172.31.39.109 /home/ec2-user/apache-tomcat-9.0.60/bin/startup.sh
+                    ssh ec2-user@172.31.4.173 /home/ec2-user/apache-tomcat-9.0.62/bin/startup.sh
                 
                 """
             }
