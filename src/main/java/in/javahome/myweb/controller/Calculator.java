@@ -20,7 +20,7 @@ public class Calculator {
 		return i-j;
 	}
 	public String getName(){
-		String name = null
-		return name.toString()
+		String name = null;
+		return name.toString();
 	}
 }
