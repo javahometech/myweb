@@ -169,7 +169,7 @@ How to create branch in locally ??
 
 git branch branchname
 
-How to push local branch remote ???
+How to push local branch to remote ???
 
 git push origin branchname
 
@@ -191,7 +191,7 @@ git checkout branchname
 
 1. fast-forward 
 
-2. twoway or recursive merge
+2. twoway or recursive merge or ort 
 
 3. git rebase ( dangerous)
 
@@ -293,7 +293,7 @@ sundar ===>> developer
 
 both develoeprs are working on the same file ===>>> mno ===>> same line ==>> 351
 
-sundar ==>> developer ==>> dev branch ==>>> pullrequest ==>>> unable to pullrequest. ===>> resolve conflicats.
+sundar ==>> developer ==>> dev branch ==>>> pullrequest ==>>> unable to pullrequest. ===>> resolve conflicts.
 
 mergeconflicts ===>>> click this ==>>>> mno ==>>> open 
 
