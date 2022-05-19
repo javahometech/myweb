@@ -1,3 +1,6 @@
 aws
 vpc
 subnte
+elb
+asg
+s3
