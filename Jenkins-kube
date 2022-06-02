@@ -1,0 +1,65 @@
+pipeline{
+    agent any
+     tools {
+        maven 'Maven-3.6.1'
+    }
+    
+    environment{
+        PATH = "/opt/maven3/bin:$PATH"
+    }
+    stages{
+        stage("Git Checkout"){
+            steps{
+                git credentialsId: 'javahome2', url: 'https://github.com/srinivas1987devops/myweb.git'
+            }
+        }
+        stage("Maven Build"){
+            steps{
+                sh "mvn clean sonar:sonar package"
+                
+            }
+        }
+        stage('Upload War To Nexus'){
+            steps{
+                  nexusArtifactUploader artifacts: [
+                       [
+                            artifactId: 'myweb', 
+                            classifier: '', 
+                            file: "target/myweb-8.2.0.war", 
+                            type: 'war'
+                       ]
+                  ], 
+                  credentialsId: 'nexus3', 
+                  groupId: 'in.javahome', 
+                  nexusUrl: '172.31.47.43:8081', 
+                  nexusVersion: 'nexus3', 
+                  protocol: 'http', 
+                  repository: 'sample-releases', 
+                  version: '8.2.0'  
+              }
+            }
+        stage('Build Docker Image'){
+            steps{
+                 sh 'docker build -t deepikac2021/spring-boot-mongo .'
+             }
+         }
+        stage('Push Docker Image'){
+             steps{
+                  withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+                      sh "docker login -u deepikac2021 -p ${DOCKER_HUB_CREDENTIALS}"
+            }
+            sh 'docker push deepikac2021/spring-boot-mongo'
+        }
+      }
+        stage("Deploy To Kuberates Cluster"){
+              steps{
+                   kubernetesDeploy(
+                   configs: 'springBoot.yml', 
+                   kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+                   enableConfigSubstitution: true
+            )
+        }
+    }
+        
+    }
+}
