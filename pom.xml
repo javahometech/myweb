@@ -10,7 +10,10 @@
 	
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
+     		<maven.compiler.source>1.8</maven.compiler.source>
+     		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>	
+	
 	<dependencies>
 		<dependency>
 		    <groupId>com.oracle.bedrock</groupId>
@@ -46,6 +49,7 @@
 		<url>http://repo1.maven.org/maven2</url>
 	    </pluginRepository>
 	</pluginRepositories>
+	
 
 	
 </project>
