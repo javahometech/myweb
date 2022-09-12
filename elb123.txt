@@ -1,0 +1,109 @@
+
+==================================================
+#! /bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+echo "<h1> User data example </h1>" > /var/www/html/index.html
+
+===================================================
+15.207.250.0 --->> EIP
+
+13.234.110.158 --->> PublicIP
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+</body>
+</html>
+
+====================================
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My Second Heading</h1>
+<p>My second paragraph.</p>
+
+</body>
+</html>
+
+========================================
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My Orders Heading</h1>
+<p>My orders paragraph.</p>
+
+</body>
+</html>
+
+===============================
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My Payments Heading</h1>
+<p>My payments paragraph.</p>
+
+</body>
+</html>
+
+MomNdad@143
+
+
+
+HTTP : without security
+
+HTTPS : SSL cirtificate ==>> upload 
+
+
+
+
+Arman@2020
+
+
+git config --global user.email “Armanali2you@gmail.com”
+
+git config --global user.name “Armanali2020”
+
+
+
+
+
+
+
+
+
+
+
+baluchina999@gmail.com
+
+baluchina@123
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
