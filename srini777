@@ -5,3 +5,7 @@ sonarqube
 nexus
 ansible
 docker
+s3
+rds
+terraform
+elb
