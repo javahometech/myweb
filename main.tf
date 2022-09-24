@@ -1,5 +1,4 @@
 provider "aws" {
-  profile = "myaws"
   region  = "ap-northeast-1"
 }
 
