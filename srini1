@@ -8,3 +8,5 @@ internetgateway
 mrtb
 subnet
 igw
+nat
+natgatewya
