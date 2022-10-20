@@ -3,3 +3,8 @@ s3
 alb
 clb
 nlb
+vpc
+internetgateway
+mrtb
+subnet
+igw
