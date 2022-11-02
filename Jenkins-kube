@@ -31,7 +31,7 @@ pipeline{
                   ], 
                   credentialsId: 'nexus3', 
                   groupId: 'in.javahome', 
-                  nexusUrl: '172.31.45.67:8081', 
+                  nexusUrl: '172.31.4.200:8081', 
                   nexusVersion: 'nexus3', 
                   protocol: 'http', 
                   repository: 'sample-releases', 
@@ -40,15 +40,15 @@ pipeline{
             }
         stage('Build Docker Image'){
             steps{
-                 sh 'docker build -t deepikac2021/spring-boot-mongo .'
+                 sh 'docker build -t raghunadh181/spring-boot-mongo .'
              }
          }
         stage('Push Docker Image'){
              steps{
                   withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
-                      sh "docker login -u deepikac2021 -p ${DOCKER_HUB_CREDENTIALS}"
+                      sh "docker login -u raghunadh181 -p ${DOCKER_HUB_CREDENTIALS}"
             }
-            sh 'docker push deepikac2021/spring-boot-mongo'
+            sh 'docker push raghunadh181/spring-boot-mongo'
         }
       }
         stage("Deploy To Kuberates Cluster"){
