@@ -2,7 +2,7 @@ pipeline{
     agent any
         stages{
             stage("Maven Build"){
-                When{
+                when{
                     branch "dev"
                 }
                 steps{
@@ -10,7 +10,7 @@ pipeline{
                 }
             }
             stage("Deploy To dev"){
-                When{
+                when{
                     branch "dev"
                 }
                 steps{
@@ -18,7 +18,7 @@ pipeline{
                 }
             }
             stage("Deploy To prod"){
-                When{
+                when{
                     branch"master"
                 }
                 steps{
