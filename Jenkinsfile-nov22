@@ -1,0 +1,21 @@
+@Library("novlibs") _
+pipeline{
+    agent any
+    stages{
+        stage("git checkout"){
+             steps{
+                    git credentialsId: 'github-creds-ov22', url: 'https://github.com/navalgoski/myweb.git'
+                }
+        }
+        stage("maven build"){
+             steps{
+                    sh 'mvn clean package'
+                }
+        }
+        stage("Dev Tomcat Deploy"){
+            steps{
+                tomcatDeploy ("10.100.202.100", "ec2-user", "tomcat-dev")
+            }
+        }
+    }
+}
