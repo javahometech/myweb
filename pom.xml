@@ -7,7 +7,6 @@
 	<version>8.3.2</version>
 	<name>Java Home myweb</name>
 	<url>http://maven.apache.org</url>
-	
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
      		<maven.compiler.source>1.8</maven.compiler.source>
