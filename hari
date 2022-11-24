@@ -5,3 +5,8 @@ k8's
 Jenkins
 sonarqube
 nexus
+rds
+route53
+cloudwatch
+asg
+elb
