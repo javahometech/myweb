@@ -1,0 +1,16 @@
+- hosts: 10.100.102.28
+  become: True
+  tasks:
+   - name: install apache
+     yum:
+      name: httpd
+      state: present
+   - name: Copy index file onto apache
+     copy:
+      src: index.html
+      dest: /var/www/html/
+   - name: start and enable apache
+     service:
+      name: httpd
+      state: started
+      enabled: True
