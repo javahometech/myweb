@@ -3,3 +3,8 @@ docker
 ansible
 sonarqube
 nexus
+vpc
+subnet
+igw
+rtb
+sg
