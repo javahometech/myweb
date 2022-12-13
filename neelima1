@@ -3,3 +3,6 @@ maven
 tomcat
 git
 jenkins
+terraform
+vpc
+cloudformation
