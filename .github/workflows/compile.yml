@@ -9,6 +9,7 @@ on:
       - main  # Adjust this based on your branch name
 
 jobs:
+  name: compile
   build:
     runs-on: ubuntu-latest
 
