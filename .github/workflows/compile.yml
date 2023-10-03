@@ -9,10 +9,9 @@ on:
       - main  # Adjust this based on your branch name
 
 jobs:
-  name: compile
+ name: compile
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
