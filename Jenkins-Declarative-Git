@@ -22,11 +22,11 @@ pipeline{
             steps{
                 sshagent(['tomcat-new']) {
                 sh """
-                    scp -o StrictHostKeyChecking=no target/myweb.war  ubuntu@ec2-3-144-86-234:/home/ubuntu/apache-tomcat-9.0.83/webapps/
+                    scp -o StrictHostKeyChecking=no target/myweb.war  ubuntu@3.144.86.234:/home/ubuntu/apache-tomcat-9.0.83/webapps/
                     
-                    ssh ubuntu@ec2-3-144-86-234 /home/ubuntu/apache-tomcat-9.0.83/webapps/bin/shutdown.sh
+                    ssh ubuntu@3-144-86-234 /home/ubuntu/apache-tomcat-9.0.83/webapps/bin/shutdown.sh
                     
-                    ssh ubuntu@ec2-3-144-86-234 /home/ubuntu/apache-tomcat-9.0.83/webapps/bin/startup.sh
+                    ssh ubuntu@3-144-86-234 /home/ubuntu/apache-tomcat-9.0.83/webapps/bin/startup.sh
                 
                 """
             }
