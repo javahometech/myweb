@@ -1,0 +1,12 @@
+pipeline{
+  node any
+    stages{
+      stage(git_checkout_SCM){
+        steps{
+          git ""
+        }
+      }
+    
+      
+    }
+}
